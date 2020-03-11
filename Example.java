@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.fwd.*;
+import org.fwd.example.CsvFwd;
 import org.fwd.example.Customer;
 import org.fwd.example.GraphData;
 
@@ -16,7 +17,12 @@ public class Example {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		 double[] xData = new double[] { 0.0, 1.0, 2.0 };
+		
+		String path = "/Users/sompopkulapalanont/eclipse-workspace/My Chart/test.csv";
+		CsvFwd saleCsv = new CsvFwd(path);
+		List<String[]> data = saleCsv.getData();
+		//System.out.println(data.get(0)[0]);
+		/* double[] xData = new double[] { 0.0, 1.0, 2.0 };
 	    double[] yData = new double[] { 2.0, 1.0, 0.0 };
 	 
 	    // Create Chart
@@ -34,7 +40,7 @@ public class Example {
 	    //GOAL
 	    XYChart chart = Customer.getCustomerGraph(customers);
 	    //new SwingWrapper(chart).displayChart();
-	    BitmapEncoder.saveBitmap(chart, "./Sample_Chart", BitmapFormat.PNG);
+	    BitmapEncoder.saveBitmap(chart, "./Sample_Chart", BitmapFormat.PNG);*/
 	}
 
 }
