@@ -5,6 +5,7 @@ import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +13,17 @@ import org.fwd.*;
 import org.fwd.example.CsvFwd;
 import org.fwd.example.Customer;
 import org.fwd.example.GraphData;
+import org.fwd.example.Transaction;
 
 public class Example {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
 		// TODO Auto-generated method stub
 		
 		String path = "/Users/sompopkulapalanont/eclipse-workspace/My Chart/test.csv";
 		CsvFwd saleCsv = new CsvFwd(path);
 		List<String[]> data = saleCsv.getData();
+		List<Transaction> transactions = Transaction.getTransactionsFromCsv(data);
 		//System.out.println(data.get(0)[0]);
 		/* double[] xData = new double[] { 0.0, 1.0, 2.0 };
 	    double[] yData = new double[] { 2.0, 1.0, 0.0 };
