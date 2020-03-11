@@ -22,6 +22,7 @@ import org.fwd.*;
 import org.fwd.example.CsvFwd;
 import org.fwd.example.Customer;
 import org.fwd.example.GraphData;
+import org.fwd.example.Report;
 import org.fwd.example.Transaction;
 
 public class Example {
@@ -35,30 +36,8 @@ public class Example {
 		List<Transaction> transactions = Transaction.getTransactionsFromCsv(data);
 		
 		//XYChart chart = QuickChart.getChart("Sample Chart", "X", "Y", "y(x)",xData, yData);
-		XYChart chart = new XYChartBuilder().width(800).height(600).title("LineChart03").xAxisTitle("Date").yAxisTitle("Y").build();
-		  // generates linear data
-	    List<Date> xData = new ArrayList<Date>();
-	    List<Double> yData = new ArrayList<Double>();
-
-	    DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-	    Date date = null;
-	    for (int i = 1; i <= 10; i++) {
-
-	      try {
-	        date = sdf.parse(i + ".10.2008");
-	      } catch (ParseException e) {
-	        e.printStackTrace();
-	      }
-	      xData.add(date);
-	      yData.add(Math.random() * i);
-	    }
-
-	    // Series
-	    XYSeries series = chart.addSeries("Fake Data", xData, yData);
-	    series.setLineColor(XChartSeriesColors.BLUE);
-	    series.setMarkerColor(Color.ORANGE);
-	    series.setMarker(SeriesMarkers.CIRCLE);
-	    series.setLineStyle(SeriesLines.SOLID);
+		Report saleReport = new Report(transactions);
+		XYChart chart =  saleReport.getSaleReportByDate();
 	    new SwingWrapper(chart).displayChart();
 	    //return chart;
 		//System.out.println(data.get(0)[0]);
